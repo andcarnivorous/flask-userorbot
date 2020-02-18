@@ -25,6 +25,9 @@ def test():
 
         data = utils.extract_json(received)
 
+        if data == False:
+            return handlers.invalid_values()
+
         series = utils.json_to_pd(data)
 
         if type(series) == bool:

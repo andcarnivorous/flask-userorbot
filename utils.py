@@ -38,14 +38,16 @@ def check_keys(received):
     return True
 
 def extract_json(request):
+    try:
+        country = request['country']
+        region = request['region']
+        visitor_type = request['visitortype']
+        referrer = int(request["referrer"])
+        referrer = True if referrer else False
 
-    country = request['country']
-    region = request['region']
-    visitor_type = request['visitortype']
-    referrer = int(request["referrer"])
-    referrer = True if referrer else False
+        data = [country, region, visitor_type, referrer]
 
-    data = [country, region, visitor_type, referrer]
-
-    return data
+        return data
+    except:
+        return False
 
