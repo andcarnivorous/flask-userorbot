@@ -1,17 +1,18 @@
 from __future__ import unicode_literals
-from flask import Flask, request, render_template, send_from_directory, after_this_request
-import flask
-import utils
-import handlers
 
-import os
 import logging
+import os
 
+import flask
+from flask import Flask, request
 
+import handlers
+import utils
 
 app = Flask(__name__, instance_path = os.getcwd())
 
 model = utils.load_model('classifier.joblib')
+
 
 @app.route('/classify',methods=['GET','POST'])
 def test():
@@ -39,9 +40,10 @@ def test():
         
         return "Flask app to check if human user or bot"
 
+
 if __name__ == "__main__":
 
     logging.basicConfig(level=logging.WARNING, filename="logs.log")
     
     app.run(host="0.0.0.0")
-    
+
