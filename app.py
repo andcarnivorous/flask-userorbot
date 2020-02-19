@@ -14,7 +14,7 @@ app = Flask(__name__, instance_path = os.getcwd())
 model = utils.load_model('classifier.joblib')
 
 
-@app.route('/classify',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def test():
     
     if request.method == "POST":
